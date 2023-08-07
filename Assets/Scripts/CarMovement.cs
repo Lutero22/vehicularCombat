@@ -24,19 +24,14 @@ public class CarMovement : MonoBehaviour
     private float frenadoActual = 0f;
     public float AnguloDesvioActual = 0f;
 
-    public Transform SpawnBala;
-    public GameObject Balaprefab;
-    public float SpeedBala = 10;
+    public ParticleSystem derrape;
+    public ParticleSystem derrape2;
+
 
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            var bullet = Instantiate(Balaprefab, SpawnBala.position, SpawnBala.rotation);
-            bullet.GetComponent<Rigidbody>().velocity = SpawnBala.forward * SpeedBala;
-
-        }
+        
     }
     private void FixedUpdate()
     {
@@ -45,6 +40,9 @@ public class CarMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             frenadoActual = frenado;
+            derrape.Play();
+            derrape2.Play();
+
         }
         else
         {
